@@ -1,4 +1,12 @@
-﻿import time
+﻿__author__ = "Mohammad Dabiri"
+__copyright__ = "Free to use, copy and modify"
+__credits__ = ["Mohammad Dabiri"]
+__license__ = "MIT Licence"
+__version__ = "0.0.1"
+__maintainer__ = "Mohammad Dabiri"
+__email__ = "moddabiri@yahoo.com"
+
+import time
 class StateMachineNode():
     def __init__(self, node_value, action, is_terminal=False, gap=0.0):
         self._node_value = node_value

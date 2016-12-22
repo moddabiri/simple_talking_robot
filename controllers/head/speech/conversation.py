@@ -1,4 +1,12 @@
-﻿conversations = {
+﻿__author__ = "Mohammad Dabiri"
+__copyright__ = "Free to use, copy and modify"
+__credits__ = ["Mohammad Dabiri"]
+__license__ = "MIT Licence"
+__version__ = "0.0.1"
+__maintainer__ = "Mohammad Dabiri"
+__email__ = "moddabiri@yahoo.com"
+
+conversations = {
     'R-HELLO': ['Hi there.', 'You must be [name].', 'It is great to see you.'],
     'R-AWAKE': ['Hey', '[Pause-Short]', 'I\'m up and ready to go.', 'What a great day to be alive.'],
     'R-GREET' : ['I am fine.', '[Pause-Short]', 'I feel kind of stupid now. But I am going to get better.' , '[Pause-Short]','How about you [name]?'],
