@@ -1,0 +1,97 @@
+Prequisits:
+- python2.7.*
+
+- sudo apt-get install python2.7-dev gfortran libatlas-base-dev espeak flac
+- sudo apt-get install python-pygame
+- sudo apt-get install portaudio19-dev
+
+- numpy (pip install numpy)
+- scipy (pip install scipy)
+- matplotlib (pip install matplotlib)
+- Pillow/PIL (pip install Pillow)
+- schedule (pip install schedule)
+- pyttsx (pip install pyttsx)
+- pythonds (pip install pythonds)
+- pyaudio (pip install pyaudio) version 2.9+!!
+- speech_recognition (pip install SpeechRecognition)
+- requests (pip install requests)
+- netifaces (pip install netifaces)
+
+- Install opencv based on ImageProcessing project instructions
+
+- On raspberry pi, if the audio is input/output from a secondary device follow the steps:
+	1. apt-get install alsa-utils
+	2. Disable the original chip (http://www.instructables.com/id/Use-USB-Sound-Card-in-Raspberry-Pi/?ALLSTEPS):
+		a. nano /etc/modprobe.d/alsa-blacklist.conf
+		b. Enter this and save: blacklist snd_bcm2835
+		c. reboot
+		d. aplay -l
+		e. arecord -l
+			make sure the USB device is listed
+		f. nano /usr/share/alsa/alsa.conf
+		g. edit line: "defaults.pcm.card" and set the value to the card number and device number from step d
+	3. Make the usb device the default device by setting the variables in alsa.conf as per (https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture)
+
+- In package controllers.head.neck.servo_control: You need to implement your servo driver or if you use servo pi, clone the project from https://github.com/abelectronicsuk/ABElectronics_Python_Libraries/tree/master/ServoPi
+- In package controllers.head.speech.pyvona: Clone pyvona from https://github.com/zbears/pyvona
+
+-Acquire your IVONA access details and fill in IVONA_ACCESS_KEY and IVONA_SECRET_KEY constants in controllers.head.speech.tts.py
+
+--If 2 raspberry pis are used:
+
+ON SERVER:
+sudo nano /etc/network/interfaces
+	iface eth0 inet static
+     address 192.168.1.10
+     network 192.168.1.1
+     netmask 255.255.255.0
+     broadcast 192.168.1.255
+     gateway 192.168.1.254
+
+sudo nano /etc/dhcpcd.conf
+	--Go to the end and add:
+	interface eth0
+	static ip_address=192.168.1.10/24
+
+ON CLIENT:
+sudo nano /etc/network/interfaces
+	iface eth0 inet static
+     address 192.168.1.11
+     network 192.168.1.1
+     netmask 255.255.255.0
+     broadcast 192.168.1.255
+     gateway 192.168.1.254
+
+sudo nano /etc/dhcpcd.conf
+	--Go to the end and add:
+	interface eth0
+	static ip_address=192.168.1.11/24
+
+
+--Test the above configurations using: sudo ifconfig
+
+
+
+-----------------------------
+Start code on boot configurations:
+	sudo nano /etc/init.d/start_robot.sh
+		
+		#!/bin/sh
+		sleep 1m
+		python -u /usr/local/projects/python/robotics/Release/start_head.py > /usr/local/projects/python/robotics/Release/exec_log.log	#Or start_speech.py
+
+		### BEGIN INIT INFO
+		# Provides:          start_robot
+		# Required-Start:    $remote_fs $syslog $network $time $portmap $named
+		# Required-Stop:     $remote_fs $syslog
+		# Default-Start:     2 3 4 5
+		# Default-Stop:      0 1 6
+		# Short-Description: Starts the robotic engine
+		# Description:       Starts the robotic engine
+		### END INIT INFO
+
+		# Author: M. Dabiri
+
+	sudo chmod +x /etc/init.d/start_robot.sh
+	sudo update-rc.d start_robot.sh defaults
+	

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>c3302f93-96b4-451c-8f1d-f49e45c20c7e</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>PFTD.robotics.pi</Name>
+    <RootNamespace>PFTD.robotics.head</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="controllers\" />
+    <Folder Include="controllers\head\" />
+    <Folder Include="controllers\head\neck\" />
+    <Folder Include="controllers\head\neck\servo_control\" />
+    <Folder Include="controllers\head\sight\" />
+    <Folder Include="controllers\head\speech\" />
+    <Folder Include="controllers\head\speech\music\" />
+    <Folder Include="controllers\head\speech\music\happy\" />
+    <Folder Include="controllers\head\speech\music\light\" />
+    <Folder Include="controllers\head\speech\pyvona\" />
+    <Folder Include="controllers\state\" />
+    <Folder Include="socketing\" />
+    <Folder Include="util\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controllers\head\neck\motor.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="controllers\head\neck\servo_control\__init__.py" />
+    <Compile Include="controllers\head\neck\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="controllers\head\head_control.py" />
+    <Compile Include="controllers\head\sight\camera.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="controllers\head\sight\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="controllers\head\speech\conversation.py" />
+    <Compile Include="controllers\head\speech\music.py" />
+    <Compile Include="controllers\head\speech\pyvona\__init__.py" />
+    <Compile Include="controllers\head\speech\stt.py" />
+    <Compile Include="controllers\head\speech\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="controllers\head\speech\tts.py" />
+    <Compile Include="controllers\head\test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="controllers\head\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="controllers\State.py" />
+    <Compile Include="controllers\state\state_machine.py" />
+    <Compile Include="controllers\state\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="controllers\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="socketing\SocketClient.py" />
+    <Compile Include="socketing\SocketNode.py" />
+    <Compile Include="socketing\SocketServer.py" />
+    <Compile Include="socketing\__init__.py" />
+    <Compile Include="start_head.py" />
+    <Compile Include="start_speech.py" />
+    <Compile Include="test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="util\net_helpers.py" />
+    <Compile Include="util\stats.py" />
+    <Compile Include="util\sys_helpers.py" />
+    <Compile Include="util\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="controllers\head\neck\servo_control\README.md" />
+    <Content Include="controllers\head\sight\haarcascade_frontalface_default.xml" />
+    <Content Include="controllers\head\speech\pyvona\Setup.txt" />
+    <Content Include="controllers\head\speech_control.py" />
+    <Content Include="Setup.txt" />
+  </ItemGroup>
+  <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
+  <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

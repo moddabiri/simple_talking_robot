@@ -1,0 +1,1 @@
+﻿#This package requires servo_pi or any driver which controls the pan/tilt servo motors https://github.com/abelectronicsuk/ABElectronics_Python_Libraries/tree/master/ServoPi
