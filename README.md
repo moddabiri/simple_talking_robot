@@ -11,8 +11,8 @@ It also starts using the name of the found face while still in sight.
 - In order to get it familiarized with your face, train opencv face recognition and export it. Then you could load the XML by uncommenting and editing the line (#recognizer.load(os.path.join(current_dir, 'trained_model.xml'))) in camera.py
 
 - My hardware setup for this code is a pair of Raspberry-pi 3 boards:
-	#1: Handles the neck and sight control. It is connected to a pi-camera. There is a servo-pi board connected to the board which controls two servo motors connected through a pan/tilt bracket.
-	#2: Handles the speaking. It is connected to a speaker, and through a USB soundcard to a microhpne.
+	Pi1: Handles the neck and sight control. It is connected to a pi-camera. There is a servo-pi board connected to the board which controls two servo motors connected through a pan/tilt bracket.
+	Pi2: Handles the speaking. It is connected to a speaker, and through a USB soundcard to a microhpne.
 	(I connected the 2 pi boards through a LAN cable, you could use 1, I extended to a second board to allocated a full board to image recognition.)
 
 - start_head.py and start_speech.py shall be executed separately to start the robot. Once they manage to hand-shake, they start communicating through the socket.
